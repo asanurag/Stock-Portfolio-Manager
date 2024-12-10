@@ -1,4 +1,3 @@
-// File: src/controllers/transactionController.js
 const Transaction = require('../models/Transaction');
 
 class TransactionController {
