@@ -9,44 +9,45 @@ A backend system for tracking and managing stock portfolios with real-time price
 - Transaction tracking
 - Real-time stock price updates
 - Historical price data
-- Performance analytics
+- Performance Analytics
 - Caching system for improved performance
 
 ## Database Schema
-User Collection
+User Collection -
 Represents users in the system. Each user can have a single portfolio and multiple transactions.
 
-Field	        Type	    Description
-_id	            ObjectId	Unique identifier for the user.
+Field	        Type	      Description
+_id	          ObjectId	  Unique identifier for the user.
 email	        String	    User's email address (unique).
 password	    String	    Encrypted password for authentication.
-createdAt	    Date	    Account creation timestamp.
+createdAt	    Date	      Account creation timestamp.
 
-Portfolio Collection
+Portfolio Collection -
 Tracks a user's stock holdings. Each portfolio belongs to a single user.
 
-Field	        Type	    Description
-_id	            ObjectId	Unique identifier for the portfolio.
-userId	        ObjectId	References the user owning the portfolio.
-holdings	    Array	    List of holdings embedded in the portfolio.
-lastUpdated	    Date	    Timestamp of the last update.
+Field	        Type	      Description
+_id	          ObjectId	  Unique identifier for the portfolio.
+userId	      ObjectId	  References the user owning the portfolio.
+holdings	    Array	      List of holdings embedded in the portfolio.
+lastUpdated	  Date	      Timestamp of the last update.
 Embedded Document: Holdings
 
-Field	        Type	    Description
+Field	          Type	      Description
 symbol	        String	    Stock symbol (e.g., AAPL, TSLA).
 shares	        Number	    Number of shares held.
 averageCost	    Number	    Average cost per share.
-Transaction Collection
+
+Transaction Collection-
 Logs all buy and sell operations for users. Each transaction belongs to a single user.
 
-Field	        Type	    Description
-_id	ObjectId	Unique      identifier for the transaction.
-userId	        ObjectId	References the user making the transaction.
+Field	          Type	      Description
+_id	ObjectId	  Unique      identifier for the transaction.
+userId	        ObjectId	  References the user who is making the transaction.
 symbol	        String	    Stock symbol (e.g., AAPL, TSLA).
-type	        String	    Type of transaction (BUY or SELL).
+type	          String	    Type of transaction (BUY or SELL).
 shares	        Number	    Number of shares bought/sold.
-price	        Number	    Price per share during the transaction.
-date	        Date	    Transaction timestamp.
+price	          Number	    Price per share during the transaction.
+date	          Date	      Transaction timestamp.
 
 Relationships
 Database Collections -
@@ -109,19 +110,19 @@ npm install
 
 
 3. Set up environment variables:
-Create a `.env` file in the root directory with the following:
+Create a .env file in the root directory with the following:
 
 PORT=5000
 MONGODB_URI=your_mongodb_atlas_connection_string
 JWT_SECRET=your-secret-key-here
 
 
-Replace `your_mongodb_atlas_connection_string` with your MongoDB Atlas connection string:
+Replace your_mongodb_atlas_connection_string with your MongoDB Atlas connection string:
 - Log in to MongoDB Atlas
 - Click "Connect" on your cluster
 - Choose "Connect your application"
 - Copy the connection string
-- Replace `<password>` with your database user password
+- Replace <password> with your database user password
 
 4. Run the application:
 # Development mode with auto-reload
