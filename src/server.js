@@ -16,7 +16,6 @@ app.use(express.json());
 app.use('/api', routes);
 app.use('/api/auth', authRoutes); 
 
-// Set the strictQuery option for Mongoose
 mongoose.set('strictQuery', true);
 
 mongoose.connect(process.env.MONGODB_URI, {
